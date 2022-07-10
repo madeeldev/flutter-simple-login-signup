@@ -12,6 +12,19 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
 
   bool _obscureText = true;
+  //
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  //
+  bool _validEmail = true;
+  bool _validPassword = true;
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,8 +69,10 @@ class _LoginPageState extends State<LoginPage> {
                                 child: Text('Email', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
                               ),
                               TextFormField(
-                                decoration: const InputDecoration(
+                                controller: _emailController,
+                                decoration: InputDecoration(
                                   hintText: 'Your email id',
+                                  errorText: _validEmail ? null : 'Email is required!',
                                 ),
                               ),
                             ],
@@ -74,9 +89,11 @@ class _LoginPageState extends State<LoginPage> {
                                 child: Text('Password', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
                               ),
                               TextFormField(
+                                controller: _passwordController,
                                 obscureText: _obscureText,
                                 decoration: InputDecoration(
                                   hintText: 'Your password',
+                                  errorText: _validPassword ? null : 'Password is required!',
                                   suffixIcon: IconButton(
                                     icon: Icon(
                                       _obscureText ? Icons.remove_red_eye : Icons.visibility_off_outlined,
@@ -119,8 +136,8 @@ class _LoginPageState extends State<LoginPage> {
                             borderRadius: BorderRadius.circular(26),
                           ),
                           child: TextButton(
+                            onPressed: _loginUser,
                             child: const Text('Login', style: TextStyle(color: Colors.white, fontSize: 20),),
-                            onPressed: () => {},
                           ),
                         ),
                         const SizedBox(height: 18,),
@@ -149,5 +166,33 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
     );
+  }
+
+  void _loginUser() {
+    final bool validForm = _validateUser();
+    if(validForm) {
+      // success
+      setState(() {
+        _validEmail = true;
+        _validPassword = true;
+      });
+    }
+  }
+  //
+  bool _validateUser() {
+    if(_emailController.text.isEmpty) {
+      setState(() {
+        _validEmail = false;
+      });
+      return false;
+    }
+    if(_passwordController.text.isEmpty) {
+      setState(() {
+        _validEmail = true;
+        _validPassword = false;
+      });
+      return false;
+    }
+    return true;
   }
 }
