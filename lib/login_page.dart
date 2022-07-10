@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_signup/forget_password_page.dart';
 import 'package:login_signup/signup_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -96,12 +97,17 @@ class _LoginPageState extends State<LoginPage> {
                         Container(
                           width: size.width * 0.80,
                           alignment: Alignment.centerRight,
-                          child: const Text(
-                            'Forget password?',
-                            style: TextStyle(
-                              color: Color(0xff939393),
-                              fontSize: 13,
-                              fontWeight: FontWeight.bold,
+                          child: GestureDetector(
+                            onTap: () => {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => const ForgetPasswordPage()))
+                            },
+                            child: const Text(
+                              'Forget password?',
+                              style: TextStyle(
+                                color: Color(0xff939393),
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),

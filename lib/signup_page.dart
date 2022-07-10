@@ -45,6 +45,19 @@ class _SignupPageState extends State<SignupPage> {
                       ),
                     ),
                     Container(
+                      width: 80,
+                      height: 80,
+                      decoration: BoxDecoration(
+                        color: Colors.grey.shade200,
+                        borderRadius: BorderRadius.circular(40),
+                      ),
+                      child: IconButton(
+                        icon: const Icon(Icons.camera_alt_sharp, size: 18,),
+                        onPressed: () => {},
+                      ),
+                    ),
+                    const SizedBox(height: 16,),
+                    Container(
                       width: size.width * 0.9,
                       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 3),
                       child: Column(
