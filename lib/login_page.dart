@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:login_signup/forget_password_page.dart';
 import 'package:login_signup/signup_page.dart';
+import 'package:email_validator/email_validator.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -13,18 +14,7 @@ class _LoginPageState extends State<LoginPage> {
 
   bool _obscureText = true;
   //
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
-  //
-  bool _validEmail = true;
-  bool _validPassword = true;
-
-  @override
-  void dispose() {
-    _emailController.dispose();
-    _passwordController.dispose();
-    super.dispose();
-  }
+  final _loginFormKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -46,118 +36,132 @@ class _LoginPageState extends State<LoginPage> {
                     borderRadius: BorderRadius.vertical(top: Radius.circular(20),),
                   ),
                   child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 25),
-                          child: const Text('Log-in',
-                            style: TextStyle(
-                                fontSize: 30,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'NotoSerif'
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: size.width * 0.9,
-                          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 3),
-                          child: Column(
-                            children: [
-                              const Align(
-                                alignment: Alignment.centerLeft,
-                                child: Text('Email', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
-                              ),
-                              TextFormField(
-                                controller: _emailController,
-                                decoration: InputDecoration(
-                                  hintText: 'Your email id',
-                                  errorText: _validEmail ? null : 'Email is required!',
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: 16,),
-                        Container(
-                          width: size.width * 0.9,
-                          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 3),
-                          child: Column(
-                            children: [
-                              const Align(
-                                alignment: Alignment.centerLeft,
-                                child: Text('Password', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
-                              ),
-                              TextFormField(
-                                controller: _passwordController,
-                                obscureText: _obscureText,
-                                decoration: InputDecoration(
-                                  hintText: 'Your password',
-                                  errorText: _validPassword ? null : 'Password is required!',
-                                  suffixIcon: IconButton(
-                                    icon: Icon(
-                                      _obscureText ? Icons.remove_red_eye : Icons.visibility_off_outlined,
-                                      color: Colors.black54,
-                                    ),
-                                    onPressed: () {
-                                      setState(() {
-                                        _obscureText = !_obscureText;
-                                      });
-                                    },
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: 16,),
-                        Container(
-                          width: size.width * 0.80,
-                          alignment: Alignment.centerRight,
-                          child: GestureDetector(
-                            onTap: () => {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => const ForgetPasswordPage()))
-                            },
-                            child: const Text(
-                              'Forget password?',
+                    child: Form(
+                      key: _loginFormKey,
+                      child: Column(
+                        children: [
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 25),
+                            child: const Text('Log-in',
                               style: TextStyle(
-                                color: Color(0xff939393),
-                                fontSize: 13,
-                                fontWeight: FontWeight.bold,
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'NotoSerif'
                               ),
                             ),
                           ),
-                        ),
-                        const SizedBox(height: 20,),
-                        Container(
-                          width: size.width * 0.8,
-                          decoration: BoxDecoration(
-                            color: const Color(0xff233743),
-                            borderRadius: BorderRadius.circular(26),
+                          Container(
+                            width: size.width * 0.9,
+                            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 3),
+                            child: Column(
+                              children: [
+                                const Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Text('Email', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                                ),
+                                TextFormField(
+                                  decoration: const InputDecoration(
+                                    hintText: 'Your email id',
+                                  ),
+                                  validator: (textValue) {
+                                    if(textValue == null || textValue.isEmpty) {
+                                      return 'Email is required!';
+                                    }
+                                    if(!EmailValidator.validate(textValue)) {
+                                      return 'Please enter a valid email';
+                                    }
+                                    return null;
+                                  },
+                                ),
+                              ],
+                            ),
                           ),
-                          child: TextButton(
-                            onPressed: _loginUser,
-                            child: const Text('Login', style: TextStyle(color: Colors.white, fontSize: 20),),
+                          const SizedBox(height: 16,),
+                          Container(
+                            width: size.width * 0.9,
+                            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 3),
+                            child: Column(
+                              children: [
+                                const Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Text('Password', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                                ),
+                                TextFormField(
+                                  obscureText: _obscureText,
+                                  decoration: InputDecoration(
+                                    hintText: 'Your password',
+                                    suffixIcon: IconButton(
+                                      icon: Icon(
+                                        _obscureText ? Icons.remove_red_eye : Icons.visibility_off_outlined,
+                                        color: Colors.black54,
+                                      ),
+                                      onPressed: () {
+                                        setState(() {
+                                          _obscureText = !_obscureText;
+                                        });
+                                      },
+                                    ),
+                                  ),
+                                  validator: (textValue) {
+                                    if(textValue == null || textValue.isEmpty) {
+                                      return 'Password is required!';
+                                    }
+                                    return null;
+                                  },
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 18,),
-                        SizedBox(
-                          width: size.width * 0.8,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Text('Don\'t have an account ? ', style: TextStyle(fontSize: 13, color: Color(0xff939393), fontWeight: FontWeight.bold),),
-                              GestureDetector(
-                                onTap: () => {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => const SignupPage()))
-                                },
-                                child: const Text('Sign-up', style: TextStyle(fontSize: 15, color: Color(0xff748288), fontWeight: FontWeight.bold),),
+                          const SizedBox(height: 16,),
+                          Container(
+                            width: size.width * 0.80,
+                            alignment: Alignment.centerRight,
+                            child: GestureDetector(
+                              onTap: () => {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => const ForgetPasswordPage()))
+                              },
+                              child: const Text(
+                                'Forget password?',
+                                style: TextStyle(
+                                  color: Color(0xff939393),
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ],
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 20,),
-                      ],
+                          const SizedBox(height: 20,),
+                          Container(
+                            width: size.width * 0.8,
+                            decoration: BoxDecoration(
+                              color: const Color(0xff233743),
+                              borderRadius: BorderRadius.circular(26),
+                            ),
+                            child: TextButton(
+                              onPressed: _loginUser,
+                              child: const Text('Login', style: TextStyle(color: Colors.white, fontSize: 20),),
+                            ),
+                          ),
+                          const SizedBox(height: 18,),
+                          SizedBox(
+                            width: size.width * 0.8,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Text('Don\'t have an account ? ', style: TextStyle(fontSize: 13, color: Color(0xff939393), fontWeight: FontWeight.bold),),
+                                GestureDetector(
+                                  onTap: () => {
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => const SignupPage()))
+                                  },
+                                  child: const Text('Sign-up', style: TextStyle(fontSize: 15, color: Color(0xff748288), fontWeight: FontWeight.bold),),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 20,),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -169,30 +173,11 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _loginUser() {
-    final bool validForm = _validateUser();
-    if(validForm) {
-      // success
-      setState(() {
-        _validEmail = true;
-        _validPassword = true;
-      });
+    // login user
+    if (_loginFormKey.currentState!.validate()) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Submitting data..')),
+      );
     }
-  }
-  //
-  bool _validateUser() {
-    if(_emailController.text.isEmpty) {
-      setState(() {
-        _validEmail = false;
-      });
-      return false;
-    }
-    if(_passwordController.text.isEmpty) {
-      setState(() {
-        _validEmail = true;
-        _validPassword = false;
-      });
-      return false;
-    }
-    return true;
   }
 }

@@ -1,4 +1,7 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:login_signup/login_page.dart';
 
 class SignupPage extends StatefulWidget {
@@ -11,6 +14,19 @@ class SignupPage extends StatefulWidget {
 class _SignupPageState extends State<SignupPage> {
 
   bool _obscureText = true;
+  File? _profileImage;
+
+  Future _pickProfileImage() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      if(image == null) return;
+
+      final imageTemporary = File(image.path);
+      setState(() => _profileImage = imageTemporary);
+    } on PlatformException catch (e) {
+      debugPrint('Failed to pick image error: $e');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,16 +60,37 @@ class _SignupPageState extends State<SignupPage> {
                         ),
                       ),
                     ),
-                    Container(
-                      width: 80,
-                      height: 80,
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade200,
-                        borderRadius: BorderRadius.circular(40),
-                      ),
-                      child: IconButton(
-                        icon: const Icon(Icons.camera_alt_sharp, size: 18,),
-                        onPressed: () => {},
+                    SizedBox(
+                      width: 130,
+                      height: 130,
+                      child: CircleAvatar(
+                        backgroundColor: Colors.grey.shade200,
+                        backgroundImage: _profileImage != null ? FileImage(_profileImage!) : null,
+                        child: Stack(
+                          children: [
+                            Positioned(
+                              bottom: 5,
+                              right: 5,
+                              child: GestureDetector(
+                                onTap: _pickProfileImage,
+                                child: Container(
+                                  height: 50,
+                                  width: 50,
+                                  decoration: BoxDecoration(
+                                    color: Colors.blue.shade400,
+                                    border: Border.all(color: Colors.white, width: 3),
+                                    borderRadius: BorderRadius.circular(25),
+                                  ),
+                                  child: const Icon(
+                                    Icons.camera_alt_sharp,
+                                    color: Colors.white,
+                                    size: 25,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     const SizedBox(height: 16,),

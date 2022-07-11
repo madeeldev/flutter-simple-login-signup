@@ -9,7 +9,7 @@ class ForgetPasswordPage extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xffEEF1F3),
+        backgroundColor: const Color(0xffEEF1F3),
         body: Column(
           children: [
             SizedBox(
