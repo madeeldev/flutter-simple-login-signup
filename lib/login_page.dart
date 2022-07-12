@@ -64,6 +64,7 @@ class _LoginPageState extends State<LoginPage> {
                                   decoration: const InputDecoration(
                                     hintText: 'Your email id',
                                   ),
+                                  autovalidateMode: AutovalidateMode.onUserInteraction,
                                   validator: (textValue) {
                                     if(textValue == null || textValue.isEmpty) {
                                       return 'Email is required!';
@@ -103,6 +104,7 @@ class _LoginPageState extends State<LoginPage> {
                                       },
                                     ),
                                   ),
+                                  autovalidateMode: AutovalidateMode.onUserInteraction,
                                   validator: (textValue) {
                                     if(textValue == null || textValue.isEmpty) {
                                       return 'Password is required!';
@@ -139,7 +141,7 @@ class _LoginPageState extends State<LoginPage> {
                               borderRadius: BorderRadius.circular(26),
                             ),
                             child: TextButton(
-                              onPressed: _loginUser,
+                              onPressed: _handleLoginUser,
                               child: const Text('Login', style: TextStyle(color: Colors.white, fontSize: 20),),
                             ),
                           ),
@@ -172,7 +174,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  void _loginUser() {
+  void _handleLoginUser() {
     // login user
     if (_loginFormKey.currentState!.validate()) {
       ScaffoldMessenger.of(context).showSnackBar(
