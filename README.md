@@ -1,16 +1,12 @@
-# login_signup
+# Simple Login, and Signup page design - Flutter UI
 
-This is a flutter application for login & signup.
+**Packages List:**
 
-## Getting Started
+- email_validator: [Link](https://pub.dev/packages/email_validator)
+- image_picker: [Link](https://pub.dev/packages/image_picker)
 
-This project is a starting point for a Flutter application.
+I have designed 3 screens, first is a login screen which shows up when the app starts. The second is the signup screen & the third screen is for forgotten passwords. I have added simple validations for all screens as well.
 
-A few resources to get you started if this is your first Flutter project:
+### Auth UI
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Preview UI](/login-signup-flutter.gif)
