@@ -1,9 +1,4 @@
-# fluter simple login signup design - Flutter UI
-
-**Packages List:**
-
-- email_validator: [Link](https://pub.dev/packages/email_validator)
-- image_picker: [Link](https://pub.dev/packages/image_picker)
+# flutter simple login signup design - Flutter UI
 
 I have designed 3 screens, first is a login screen which shows up when the app starts. The second is the signup screen & the third screen is for forgotten passwords. I have added simple validations for all screens as well.
 
@@ -20,3 +15,8 @@ flutter run
 ### Auth UI
 
 ![Preview UI](/login-signup-flutter.gif)
+
+**Packages List:**
+
+- email_validator: [Link](https://pub.dev/packages/email_validator)
+- image_picker: [Link](https://pub.dev/packages/image_picker)
