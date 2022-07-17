@@ -1,22 +1,98 @@
-# flutter simple login signup design - Flutter UI
+# Login And Sign-up Screens - Flutter UI
 
 I have designed 3 screens, first is a login screen which shows up when the app starts. The second is the signup screen & the third screen is for forgotten passwords. I have added simple validations for all screens as well.
 
-[Watch it on Youtube](https://youtu.be/rjB0GS61ZH0)
-<br><br>
+This project is an implementation of a Design i found on [dribbble.com](https://dribbble.com/shots/15145502-Login-And-Sign-up-Screens) by [Yashvi Bhatt](https://dribbble.com/YashviBhatt)
 
-## Development Setup
-Clone the repository and run the following commands:
+## Art
+<img src="https://cdn.dribbble.com/users/2860566/screenshots/15145502/media/cd1749ebb4f3dd33f78c5e5e60941eca.png" width="100%"  height="50%"/>
+<br>
+
+<tr>
+    <td><img align="left" src="/login_screen.png" width="200" height="400"/></td>
+    <td><img src="/forget_password_screen.png" width="200" height="400"/></td> 
+    <td><img src="/signup_screen.png" width="200" height="400"/></td> 
+</tr>
+
+## Getting Started
+
+This project is a starting point for a Flutter application.
+
+To clone this project, open your terminal or cmd
+
 ```
-flutter pub get
-flutter run
+cd folder/to/clone-into/
 ```
 
-### Auth UI
+```
+git clone https://github.com/madeeldev/flutter-simple-login-signup.git
+```
 
-![Preview UI](/login-signup-flutter.gif)
+Then locate the project on your system and open with android studio or Vscode or intellij IDE.
 
-**Packages List:**
+To Run:
+```
+C:\path\to\project> flutter pub get
 
-- email_validator: [Link](https://pub.dev/packages/email_validator)
-- image_picker: [Link](https://pub.dev/packages/image_picker)
+```
+then run:
+
+```
+C:\path\to\project> flutter run
+
+```
+
+## Build release version
+
+```
+run: flutter build <OS PLATFORM> e.g flutter build ios
+```
+
+## Resources
+
+A few resources to get you started if this is your first Flutter project:
+
+- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
+
+For help getting started with Flutter, view our
+[online documentation](https://flutter.io/docs), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
+
+## Prerequisites
+
+What things you need to run the app
+
+```
+* Android Studio/Vscode/Intellij IDE
+* Flutter SDK
+* Android SDK
+* Windows/MacBook
+```
+
+## How to contribute
+
+- **Fork the repository and clone it locally**. Connect your local to the original “upstream” repository by adding it as a remote. Pull in changes from “upstream” often so that you stay up to date so that when you submit your pull request, merge conflicts will be less likely. (See more detailed instructions here.)
+- **Create a branch** for your edits.
+- **Reference any relevant issues** or supporting documentation in your PR (for example, “Closes #37.”)
+- **Include screenshots of the before and after** if your changes include differences in HTML/CSS. Drag and drop the images into the body of your pull request.
+- **Test your changes!** Run your changes against any existing tests if they exist and create new ones when needed. Whether tests exist or not, make sure your changes don’t break the existing project.
+- **Contribute in the style of the project** to the best of your abilities. This may mean using indents, semi-colons or comments differently than you would in your own repository, but makes it easier for the maintainer to merge, others to understand and maintain in the future.
+
+## Built With
+
+- [Android Studio](https://developer.android.com/studio/install) - How to install Android Studio
+- [Flutter](https://flutter.io) - Flutter Official website
+
+## Author 😊
+
+**Adeel Safdar**
+
+- [**Gmail**](adeelsafdar.dev@gmail.com)
+- [**Linkedin**](https://www.linkedin.com/in/madeeldev/)
+
+## Inspiration
+
+**Yashvi Bhatt**
+
+- [**https://dribbble.com/YashviBhatt**](https://dribbble.com/shots/15145502-Login-And-Sign-up-Screens)
