@@ -8,7 +8,11 @@ This project is an implementation of a Design i found on [dribbble.com](https://
 <img src="https://cdn.dribbble.com/users/2860566/screenshots/15145502/media/cd1749ebb4f3dd33f78c5e5e60941eca.png" width="100%"  height="50%"/>
 <br>
 
-<tr><td><img align="left" src="/login_screen.png" width="200" height="400"/></td><td><img align="left" src="/signup_screen.png" width="200" height="400"/</td><td><img src="/forget_password_screen.png" width="200" height="400"/></td></tr>
+<tr>
+  <td><img align="left" src="/login_screen.png" width="200" height="400"/></td>
+  <td><img align="left" src="/signup_screen.png" width="200" height="400"/</td>
+  <td><img src="/forget_password_screen.png" width="200" height="400"/></td>
+</tr>
 
 ## Getting Started
 
