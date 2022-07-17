@@ -86,7 +86,6 @@ What things you need to run the app
 
 **Adeel Safdar**
 
-- [**Gmail**](adeelsafdar.dev@gmail.com)
 - [**Linkedin**](https://www.linkedin.com/in/madeeldev/)
 
 ## Inspiration
