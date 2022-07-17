@@ -1,7 +1,5 @@
 # Login And Sign-up Screens - Flutter UI
 
-I have designed 3 screens, first is a login screen which shows up when the app starts. The second is the signup screen & the third screen is for forgotten passwords. I have added simple validations for all screens as well.
-
 This project is an implementation of a Design i found on [dribbble.com](https://dribbble.com/shots/15145502-Login-And-Sign-up-Screens) by [Yashvi Bhatt](https://dribbble.com/YashviBhatt)
 
 ## Art
