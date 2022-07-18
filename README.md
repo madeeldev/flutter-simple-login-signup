@@ -6,7 +6,7 @@ This project is an implementation of a Design i found on [dribbble.com](https://
 <img src="https://cdn.dribbble.com/users/2860566/screenshots/15145502/media/cd1749ebb4f3dd33f78c5e5e60941eca.png" width="100%"  height="50%"/>
 <br>
 
-<div align="center" padding="100px">
+<div align="center">
 <img src="/login_screen.png" width="200" /> <img src="/signup_screen.png" width="200" /> <img src="/forget_password_screen.png" width="200" />
 </div>
 
