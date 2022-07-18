@@ -6,8 +6,12 @@ This project is an implementation of a Design i found on [dribbble.com](https://
 <img src="https://cdn.dribbble.com/users/2860566/screenshots/15145502/media/cd1749ebb4f3dd33f78c5e5e60941eca.png" width="100%"  height="50%"/>
 <br>
 
-<div style="width: 100%; padding: 40px 0px 30px 20px; ackground-color: #B4B7BA; text-align: center;">
-<img src="/login_screen.png" width="200" /> <img src="/signup_screen.png" width="200" /> <img src="/forget_password_screen.png" width="200" />
+<div align="center">
+	<br>
+	<a href="https://github.com/sindresorhus/css-in-readme-like-wat/blame/main/header.svg">
+		<img src="/login_screen.png" width="200" /> <img src="/signup_screen.png" width="200" /> <img src="/forget_password_screen.png" width="200" />
+	</a>
+	<br>
 </div>
 
 ## Getting Started
