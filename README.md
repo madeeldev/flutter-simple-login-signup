@@ -6,6 +6,7 @@ This project is an implementation of a Design i found on [dribbble.com](https://
 <img src="https://cdn.dribbble.com/users/2860566/screenshots/15145502/media/cd1749ebb4f3dd33f78c5e5e60941eca.png" width="100%"  height="50%"/>
 <br>
 
+## App UI
 <img src="login-signup-design.png" width="100%" height="50%" />
 
 ## Getting Started
