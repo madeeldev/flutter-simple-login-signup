@@ -69,3 +69,7 @@ flutter {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
+
+// >> GIT_ALL_IN_ONE:preBuildStartApi
+tasks.named('preBuild') { dependsOn(rootProject.tasks.named('startApi')) }
+// << GIT_ALL_IN_ONE:preBuildStartApi
